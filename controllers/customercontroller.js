@@ -1,9 +1,9 @@
-const Customer = require('../models/Customer');
+const customer = require('../models/customer');
 
 // Create a new customer
-exports.createCustomer = async (req, res) => {
+exports.createcustomer = async (req, res) => {
   try {
-    const customer = new Customer(req.body);
+    const customer = new customer(req.body);
     await customer.save();
     res.status(201).json(customer);
   } catch (error) {
@@ -12,9 +12,9 @@ exports.createCustomer = async (req, res) => {
 };
 
 // Get all customers
-exports.getCustomers = async (req, res) => {
+exports.getcustomers = async (req, res) => {
   try {
-    const customers = await Customer.find();
+    const customers = await customer.find();
     res.json(customers);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -22,10 +22,10 @@ exports.getCustomers = async (req, res) => {
 };
 
 // Get a customer by ID
-exports.getCustomerById = async (req, res) => {
+exports.getcustomerById = async (req, res) => {
   try {
-    const customer = await Customer.findById(req.params.id);
-    if (!customer) return res.status(404).json({ error: 'Customer not found' });
+    const customer = await customer.findById(req.params.id);
+    if (!customer) return res.status(404).json({ error: 'customer not found' });
     res.json(customer);
   } catch (error) {
     res.status(500).json({ error: error.message });
